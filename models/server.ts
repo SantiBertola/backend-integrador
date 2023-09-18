@@ -30,7 +30,7 @@ export class Server {
   middlewares(): void {
     this.app.use(
       cors({
-        origin: "https://integrador-react-xi.vercel.app/",
+        origin: "https://integrador-react-xi.vercel.app",
       })
     );
     this.app.use(express.json());
