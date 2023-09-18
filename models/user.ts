@@ -1,5 +1,4 @@
 import { Model, Schema, model } from "mongoose";
-import { ROLES } from "../helpers/constants";
 
 export interface IUser {
   nombre: string;
@@ -22,10 +21,6 @@ const UserSchema = new Schema<IUser>({
   password: {
     type: String,
     required: [true, "La contraseña es requerida"],
-  },
-  rol: {
-    type: String,
-    default: ROLES.user,
   },
   code: {
     type: String,

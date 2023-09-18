@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import Usuario, { IUser } from "../models/user";
-import { ROLES } from "../helpers/constants";
 import bcryptjs from "bcryptjs";
 import randomstring from "randomstring";
 import { sendEmail } from "../mailer/mailer";
@@ -14,12 +13,6 @@ export const register = async (req: Request, res: Response): Promise<void> => {
   const salt = bcryptjs.genSaltSync();
 
   usuario.password = bcryptjs.hashSync(password, salt);
-
-  const adminKey = req.headers["admin-key"];
-
-  if (adminKey === process.env.KEYFORADMIN) {
-    usuario.rol = ROLES.admin;
-  }
 
   const newCode = randomstring.generate(6);
 
